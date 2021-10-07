@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.LinearLayout;
 
 import com.google.firebase.database.DataSnapshot;
@@ -44,6 +45,7 @@ public class ChatsFragments extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentChatsFragmentsBinding.inflate(inflater,container,false);
 
+        database =FirebaseDatabase.getInstance();
         UsersAdapter adapter = new UsersAdapter(list, getContext());
         binding.chatRecyclerView.setAdapter(adapter);
 
@@ -53,11 +55,14 @@ public class ChatsFragments extends Fragment {
         database.getReference().child("Users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Users users =   dataSnapshot.getValue(Users.class);
-                    
+                    users.setUserId(dataSnapshot.getKey());
+                    list.add(users);
 
                 }
+                adapter.notifyDataSetChanged();
 
             }
 

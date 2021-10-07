@@ -133,7 +133,7 @@ public class SignIn extends AppCompatActivity {
                             FirebaseUser user = auth.getCurrentUser();
 
                             Users users = new Users();
-                            users.setUserid(user.getUid());
+                            users.setUserId(user.getUid());
                             users.setUserName(user.getDisplayName());
                             users.setProfilepic(user.getPhotoUrl().toString());
                             database.getReference().child("Users").child(user.getUid()).setValue(users);
