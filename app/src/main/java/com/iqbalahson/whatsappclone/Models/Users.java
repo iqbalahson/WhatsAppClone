@@ -1,14 +1,14 @@
 package com.iqbalahson.whatsappclone.Models;
 
 public class Users {
-    String profilepic, userName, mail, password, userid, lastMessage;
+    String profilepic, userName, mail, password, userId, lastMessage;
 
-    public Users(String profilepic, String userName, String mail, String password, String userid, String lastMessage) {
+    public Users(String profilepic, String userName, String mail, String password, String userId, String lastMessage) {
         this.profilepic = profilepic;
         this.userName = userName;
         this.mail = mail;
         this.password = password;
-        this.userid = userid;
+        this.userId = userId;
         this.lastMessage = lastMessage;
     }
     public Users(){}
@@ -20,6 +20,14 @@ public class Users {
         this.userName = userName;
         this.mail = mail;
         this.password = password;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getProfilepic() {
@@ -54,13 +62,7 @@ public class Users {
         this.password = password;
     }
 
-    public String getUserid() {
-        return userid;
-    }
-
-    public void setUserid(String userid) {
-        this.userid = userid;
-    }
+   
 
     public String getLastMessage() {
         return lastMessage;
@@ -69,4 +71,7 @@ public class Users {
     public void setLastMessage(String lastMessage) {
         this.lastMessage = lastMessage;
     }
+
+
+
 }
